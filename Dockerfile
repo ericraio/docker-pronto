@@ -12,6 +12,3 @@ RUN gem install pronto \
     pronto-brakeman \
     pronto-rails_schema \
     --no-document
-
-# copy over various default linter files
-COPY rubocop.yml /root/.rubocop.yml
