@@ -12,3 +12,5 @@ RUN gem install pronto \
     pronto-brakeman \
     pronto-rails_schema \
     --no-document
+
+CMD [ "irb" ]
