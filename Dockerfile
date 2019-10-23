@@ -8,6 +8,7 @@ RUN apt-get update -y && \
 RUN gem install pronto \
     # just list all the linters you are planning to use
     pronto-rubocop \
+    pronto-rails_best_practices \
     --no-document
 
 # copy over various default linter files
