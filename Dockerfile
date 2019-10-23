@@ -10,6 +10,7 @@ RUN gem install pronto \
     pronto-rubocop \
     pronto-rails_best_practices \
     pronto-brakeman \
+    pronto-rails_schema \
     --no-document
 
 # copy over various default linter files
