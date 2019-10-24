@@ -6,9 +6,6 @@ RUN apt-get update -y && \
       apt-get install -y cmake && \
       gem install -N pronto \
       # just list all the linters you are planning to use
-      pronto-rubocop \
-      pronto-rails_best_practices \
-      pronto-brakeman \
-      pronto-rails_schema
+      pronto-rubocop
 
 CMD [ "irb" ]
