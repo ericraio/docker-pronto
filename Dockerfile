@@ -1,14 +1,9 @@
-FROM ruby:2.6.4-alpine3.10
+FROM ruby:2.6.4
 MAINTAINER Eric Raio
 
 # cmake is required by pronto
-RUN set -ex && \
-     apk update && \
-     apk upgrade && \
-     apk add \
-     --no-cache \
-     --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main \
-     cmake && \
+RUN apt-get update -y && \
+     apt-get install -y cmake && \
      gem install -N pronto \
      # just list all the linters you are planning to use
      pronto-rubocop
