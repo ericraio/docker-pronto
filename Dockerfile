@@ -7,7 +7,8 @@ RUN set -ex && \
      apk upgrade && \
      apk add \
      --no-cache \
-     --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main \cmake && \
+     --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main \
+     cmake && \
      gem install -N pronto \
      # just list all the linters you are planning to use
      pronto-rubocop
