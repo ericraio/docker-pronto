@@ -4,11 +4,15 @@ MAINTAINER Eric Raio
 # cmake is required by pronto
 RUN apt-get update -y && \
      apt-get install -y \
-     cmake curl libsnappy-dev autoconf automake libtool pkg-config git \
+     cmake curl libsnappy-dev autoconf automake libtool pkg-config git sudo \
      && \
      gem install -N pronto \
      # just list all the linters you are planning to use
      pronto-rubocop
+     
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+
+USER docker
 
 WORKDIR /
 RUN git clone https://github.com/openvenues/libpostal
