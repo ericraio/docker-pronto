@@ -1,6 +1,8 @@
 FROM ruby:2.6.4
 MAINTAINER Eric Raio
 
+ENV HOME /root
+
 # cmake is required by pronto
 RUN apt-get update -y && \
      apt-get install -y \
@@ -14,8 +16,8 @@ RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 USER docker
 
-WORKDIR /
-RUN sudo git clone https://github.com/openvenues/libpostal
+WORKDIR $HOME
+RUN git clone https://github.com/openvenues/libpostal
 WORKDIR /libpostal
 COPY ./build_libpostal.sh .
 RUN ./build_libpostal.sh
