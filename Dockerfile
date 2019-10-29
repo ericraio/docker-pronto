@@ -15,7 +15,7 @@ RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 USER docker
 
 WORKDIR /
-RUN git clone https://github.com/openvenues/libpostal
+RUN sudo git clone https://github.com/openvenues/libpostal
 WORKDIR /libpostal
 COPY ./build_libpostal.sh .
 RUN ./build_libpostal.sh
