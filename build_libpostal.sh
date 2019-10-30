@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
 ./bootstrap.sh
 mkdir -p $LIBPOSTAL_DATA_DIR
 ./configure --datadir=$LIBPOSTAL_DATA_DIR
