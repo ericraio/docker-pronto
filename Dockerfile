@@ -1,24 +1,34 @@
 FROM ruby:2.6.4
 MAINTAINER Eric Raio
 
-ENV HOME /root
+ENV DEBIAN_FRONTEND     noninteractive
+ENV LIBPOSTAL_VERSION   v1.0.0
+ENV LIBPOSTAL_DIR       /opt/libpostal
+ENV LIBPOSTAL_DATA_DIR  /opt/libpostal_data
 
 # cmake is required by pronto
-RUN apt-get update -y && \
-     apt-get install -y \
-     cmake curl libsnappy-dev autoconf automake libtool pkg-config git sudo \
-     && \
-     gem install -N pronto \
-     # just list all the linters you are planning to use
-     pronto-rubocop
-     
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+RUN echo "deb http://cz.archive.ubuntu.com/ubuntu trusty main" > /etc/apt/sources.list
 
-USER docker
+RUN apt-get update && apt-get -qq update && apt-get install -y --force-yes \
+  cmake \
+  libsnappy-dev \
+  autoconf \
+  automake \
+  libtool \
+  pkg-config \
+  git
+  && \
+  gem install -N pronto \
+  # just list all the linters you are planning to use
+  pronto-rubocop
 
-WORKDIR $HOME
-RUN git clone https://github.com/openvenues/libpostal
-WORKDIR /libpostal
+########################################
+# libpostal
+########################################
+RUN wget https://github.com/openvenues/libpostal/archive/$LIBPOSTAL_VERSION.tar.gz
+RUN mkdir -p $LIBPOSTAL_DIR
+RUN tar -xvzf $LIBPOSTAL_VERSION.tar.gz -C $LIBPOSTAL_DIR --strip 1
+WORKDIR $LIBPOSTAL_DIR
 COPY ./build_libpostal.sh .
 RUN ./build_libpostal.sh
 
