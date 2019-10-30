@@ -28,6 +28,7 @@ RUN mkdir -p $LIBPOSTAL_DIR
 RUN tar -xvzf $LIBPOSTAL_VERSION.tar.gz -C $LIBPOSTAL_DIR --strip 1
 WORKDIR $LIBPOSTAL_DIR
 COPY ./build_libpostal.sh .
+RUN ["chmod", "+x", "./build_libpostal.sh"]
 RUN ./build_libpostal.sh
 
 CMD [ "irb" ]
