@@ -7,8 +7,6 @@ ENV LIBPOSTAL_DIR       /opt/libpostal
 ENV LIBPOSTAL_DATA_DIR  /opt/libpostal_data
 
 # cmake is required by pronto
-RUN echo "deb http://cz.archive.ubuntu.com/ubuntu trusty main" > /etc/apt/sources.list
-
 RUN apt-get update && apt-get -qq update && apt-get install -y --force-yes \
   cmake \
   libsnappy-dev \
