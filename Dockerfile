@@ -16,7 +16,7 @@ RUN apt-get update && apt-get -qq update && apt-get install -y --force-yes \
   automake \
   libtool \
   pkg-config \
-  git
+  git \
   && \
   gem install -N pronto \
   # just list all the linters you are planning to use
