@@ -15,6 +15,7 @@ RUN apt-get update && apt-get -qq update && apt-get install -y --force-yes \
   libtool \
   pkg-config \
   git \
+  aspell \
   && \
   gem install -N pronto \
   # just list all the linters you are planning to use
