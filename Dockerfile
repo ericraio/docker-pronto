@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND     noninteractive
 ENV LIBPOSTAL_VERSION   v1.0.0
 ENV LIBPOSTAL_DIR       /opt/libpostal
 ENV LIBPOSTAL_DATA_DIR  /opt/libpostal_data
-ENV EXECJS_RUNTIME Nodej
+ENV EXECJS_RUNTIME Node
 
 # cmake is required by pronto
 RUN apt-get update && apt-get -qq update && apt-get install -y --force-yes \
